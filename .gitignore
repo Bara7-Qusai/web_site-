@@ -9,3 +9,5 @@ npm-debug.log*
 .DS_Store
 /test-results/
 /playwright-report/
+al-kunooz-static-site.zip
+.static-build/

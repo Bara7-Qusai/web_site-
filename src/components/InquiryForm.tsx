@@ -43,9 +43,10 @@ export function InquiryForm({ locale, products }: { locale: Locale; products: { 
     setErrors({});
     setStatus("sending");
     try {
-      const res = await fetch("/api/inquiry", {
+      // Static hosting has no /api route: set NEXT_PUBLIC_INQUIRY_ENDPOINT (e.g. Formspree) instead.
+      const res = await fetch(process.env.NEXT_PUBLIC_INQUIRY_ENDPOINT || "/api/inquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(parsed.data),
       });
       const body = (await res.json().catch(() => ({}))) as { errors?: Record<string, InquiryErrorCode>; error?: string };
@@ -56,7 +57,7 @@ export function InquiryForm({ locale, products }: { locale: Locale; products: { 
       } else if (res.status === 400 && body.errors) {
         setErrors(body.errors);
         setStatus("idle");
-      } else if (res.status === 503) setStatus("not_configured");
+      } else if ([404, 405, 501, 503].includes(res.status)) setStatus("not_configured");
       else if (res.status === 429) setStatus("rate_limited");
       else setStatus("error");
     } catch {

@@ -139,6 +139,28 @@ npm run catalog:pdf                   # terminal 2 → public/downloads/al-kunoo
 Set `CATALOG_BASE_URL` to print from another host, or `PLAYWRIGHT_MODULE` / `CHROMIUM_PATH`
 to use a global Playwright/Chromium install.
 
+## Static HTML/CSS/JS version (no Node server)
+
+```bash
+npm run build:static        # → out/ (plain HTML, CSS, JS, images) + al-kunooz-static-site.zip
+```
+
+Upload the contents of `out/` to any static host: cPanel/shared hosting, Netlify, GitHub Pages,
+Cloudflare Pages, S3, Nginx/Apache. To preview locally: `npx serve out` (or
+`python3 -m http.server -d out`). Opening the files directly with `file://` does not work,
+because pages use site-root paths such as `/_next/...` and `/images/...` — serve them from a web
+server at the domain root.
+
+Differences from the Node version:
+
+| Feature | Static version |
+|---|---|
+| Pages, catalog search & filters, product pages, compare, PDFs, language switch | ✅ identical |
+| `/` language detection | `index.html` picks `/ar/` or `/en/` in the browser (saved choice → browser language → Arabic) |
+| Inquiry form | No built-in API. Set `NEXT_PUBLIC_INQUIRY_ENDPOINT` (e.g. a Formspree form URL) **before** building; otherwise the form shows "online inquiries are not enabled yet" |
+| Image optimization | Images are served as-is (already compressed JPEGs) |
+| Security headers | Configure on the host (see `next.config.ts` for the recommended set) |
+
 ## Deployment
 
 **Vercel (simplest):** import the repository, set the environment variables, deploy.

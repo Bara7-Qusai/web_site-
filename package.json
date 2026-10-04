@@ -12,7 +12,8 @@
     "test": "node --test --experimental-strip-types tests/*.test.ts",
     "validate:data": "node --experimental-strip-types scripts/validate-data.ts",
     "catalog:pdf": "node scripts/generate-catalog-pdf.mjs",
-    "test:e2e": "node tests/e2e-smoke.mjs"
+    "test:e2e": "node tests/e2e-smoke.mjs",
+    "build:static": "node scripts/build-static.mjs"
   },
   "engines": {
     "node": ">=22.6"

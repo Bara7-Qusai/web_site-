@@ -9,7 +9,8 @@ export interface NavItem {
 }
 
 export function NavLinks({ items, className = "", itemClassName = "", onNavigate }: { items: NavItem[]; className?: string; itemClassName?: string; onNavigate?: () => void }) {
-  const pathname = usePathname();
+  // Static exports use trailing slashes ("/ar/products/").
+  const pathname = usePathname().replace(/(.)\/$/, "$1");
   return (
     <ul className={className}>
       {items.map((item) => {

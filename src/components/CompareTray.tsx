@@ -15,7 +15,7 @@ export function CompareTray({ locale, index }: { locale: Locale; index: CompareI
   const list = useCompareList().filter((s) => index[s]);
   const pathname = usePathname();
   const dict = getDictionary(locale).compare;
-  if (list.length === 0 || pathname.endsWith("/compare")) return null;
+  if (list.length === 0 || /\/compare\/?$/.test(pathname)) return null;
 
   return (
     <aside aria-label={dict.tray} className="no-print fixed inset-x-0 bottom-4 z-40 px-4">

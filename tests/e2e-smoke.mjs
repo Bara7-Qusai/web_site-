@@ -20,7 +20,7 @@ const step = (name) => console.log("•", name);
 try {
   step("root redirects to a locale");
   await page.goto(BASE + "/");
-  assert.match(page.url(), /\/(ar|en)$/);
+  assert.match(page.url(), /\/(ar|en)\/?$/);
 
   step("Arabic home is RTL, English home is LTR");
   await page.goto(BASE + "/ar");
