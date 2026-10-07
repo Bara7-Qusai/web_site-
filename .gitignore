@@ -11,3 +11,4 @@ npm-debug.log*
 /playwright-report/
 al-kunooz-static-site.zip
 .static-build/
+__pycache__/
