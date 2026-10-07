@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+/* Self-hosted fonts (no runtime requests to Google) */
+@import "@fontsource/ibm-plex-sans-arabic/400.css";
+@import "@fontsource/ibm-plex-sans-arabic/500.css";
+@import "@fontsource/ibm-plex-sans-arabic/600.css";
+@import "@fontsource/ibm-plex-sans-arabic/700.css";
+@import "@fontsource-variable/manrope/index.css";
+
+@theme {
+  /* Brand palette — sampled from the Al-Kunooz logo and catalog cover */
+  --color-forest-950: #082a19;
+  --color-forest-900: #0c3d24;
+  --color-forest-800: #115230;
+  --color-forest-700: #17643b;
+  --color-forest-600: #1f7646;
+  --color-leaf-600: #558a33;
+  --color-leaf-500: #68a241;
+  --color-leaf-400: #86b95f;
+  --color-leaf-200: #cfe5bd;
+  --color-leaf-100: #e8f2df;
+  --color-leaf-50: #f3f8ee;
+  --color-soil-800: #46220f;
+  --color-soil-700: #5a2f1c;
+  --color-soil-500: #8b5e3c;
+  --color-sand-50: #fbfaf6;
+  --color-sand-100: #f5f2ea;
+  --color-sand-200: #ebe5d6;
+  --color-sand-300: #dcd3bf;
+  --color-ink-900: #17231c;
+  --color-ink-700: #3a4a40;
+  --color-ink-500: #637267;
+
+  --font-sans: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-latin: "Manrope Variable", "IBM Plex Sans Arabic", system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(17 82 48 / 0.06), 0 8px 24px -12px rgb(17 82 48 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(17 82 48 / 0.06), 0 20px 40px -16px rgb(17 82 48 / 0.3);
+
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  html[lang="en"] body {
+    font-family: var(--font-latin);
+  }
+  body {
+    background: var(--color-sand-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-leaf-200);
+    color: var(--color-forest-900);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-leaf-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  /* Latin technical strings (formulations, chemical names) inside Arabic text */
+  .ltr-num {
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-family: var(--font-latin);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-x {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-x {
+      padding-inline: 2rem;
+    }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.75rem 1.4rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      box-shadow 0.2s,
+      transform 0.2s,
+      border-color 0.2s;
+    white-space: nowrap;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background: var(--color-forest-800);
+    color: white;
+    box-shadow: 0 6px 18px -8px rgb(17 82 48 / 0.6);
+  }
+  .btn-primary:hover {
+    background: var(--color-forest-700);
+  }
+  .btn-leaf {
+    background: var(--color-leaf-500);
+    color: var(--color-forest-950);
+  }
+  .btn-leaf:hover {
+    background: var(--color-leaf-400);
+  }
+  .btn-outline {
+    border: 1.5px solid var(--color-forest-800);
+    color: var(--color-forest-800);
+    background: transparent;
+  }
+  .btn-outline:hover {
+    background: var(--color-forest-800);
+    color: white;
+  }
+  .btn-ghost-light {
+    border: 1.5px solid rgb(255 255 255 / 0.35);
+    color: white;
+  }
+  .btn-ghost-light:hover {
+    background: rgb(255 255 255 / 0.12);
+    border-color: rgb(255 255 255 / 0.6);
+  }
+  .btn-whatsapp {
+    background: #1f9d55;
+    color: white;
+  }
+  .btn-whatsapp:hover {
+    background: #188246;
+  }
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-leaf-600);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+  }
+  html[lang="ar"] .eyebrow {
+    letter-spacing: 0;
+  }
+
+  .card {
+    background: white;
+    border-radius: 1.25rem;
+    border: 1px solid var(--color-sand-200);
+    box-shadow: var(--shadow-card);
+  }
+
+  .field {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1.5px solid var(--color-sand-300);
+    background: white;
+    padding: 0.7rem 0.9rem;
+    font-size: 1rem;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-leaf-500);
+    box-shadow: 0 0 0 4px rgb(104 162 65 / 0.18);
+  }
+  .field[aria-invalid="true"] {
+    border-color: #b42318;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.925rem;
+  }
+  .data-table thead th {
+    background: var(--color-forest-800);
+    color: white;
+    font-weight: 600;
+    text-align: start;
+    padding: 0.7rem 0.9rem;
+    white-space: nowrap;
+  }
+  .data-table thead th:first-child {
+    border-start-start-radius: 0.75rem;
+  }
+  .data-table thead th:last-child {
+    border-start-end-radius: 0.75rem;
+  }
+  .data-table tbody th {
+    text-align: start;
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--color-sand-200);
+    vertical-align: top;
+  }
+  .data-table td {
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--color-sand-200);
+    vertical-align: top;
+  }
+  .data-table tbody tr:nth-child(even) > * {
+    background: var(--color-sand-50);
+  }
+
+  /* Decorative concentric arcs from the brand cover */
+  .brand-arcs {
+    background-image:
+      radial-gradient(circle at 85% 20%, transparent 0 22rem, rgb(255 255 255 / 0.06) 22rem 22.1rem, transparent 22.1rem),
+      radial-gradient(circle at 85% 20%, transparent 0 30rem, rgb(255 255 255 / 0.05) 30rem 30.1rem, transparent 30.1rem),
+      radial-gradient(circle at 85% 20%, transparent 0 38rem, rgb(255 255 255 / 0.04) 38rem 38.1rem, transparent 38.1rem);
+  }
+  html[dir="rtl"] .brand-arcs {
+    transform: scaleX(-1);
+  }
+  .brand-dots {
+    background-image: radial-gradient(rgb(255 255 255 / 0.18) 1.5px, transparent 1.6px);
+    background-size: 18px 18px;
+  }
+
+  /* Scroll-driven reveal — progressive enhancement, no JS required */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  .catalog-print {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .print-page {
+    break-after: page;
+  }
+  .reveal {
+    animation: none !important;
+  }
+}
