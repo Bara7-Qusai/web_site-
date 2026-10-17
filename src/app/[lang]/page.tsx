@@ -56,13 +56,13 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="brand-dots pointer-events-none absolute top-6 start-4 h-48 w-80 opacity-60 [mask-image:radial-gradient(black,transparent_70%)]" />
         <div className="container-x relative grid items-center gap-10 pb-28 pt-12 sm:pt-16 lg:grid-cols-[1.05fr_1fr] lg:pb-36 lg:pt-20">
           <div className="animate-rise">
-            <p className="eyebrow !text-leaf-400">{h.eyebrow}</p>
+            <p className="eyebrow !text-leaf-300">{h.eyebrow}</p>
             <h1 className="mt-4 text-4xl font-bold leading-[1.15] sm:text-5xl lg:text-6xl">
               {h.title}
               <span className="mt-2 block text-leaf-400">{h.titleAccent}</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">{h.lead}</p>
-            <p className="mt-3 max-w-xl text-sm text-white/55" lang={otherLocale(locale)} dir={locale === "ar" ? "ltr" : "rtl"}>
+            <p className="mt-3 max-w-xl text-sm text-white/70" lang={otherLocale(locale)} dir={locale === "ar" ? "ltr" : "rtl"}>
               {h.leadEn}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -212,7 +212,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           <SectionHeading id="sol-title" tone="light" eyebrow={h.solutionsEyebrow} title={h.solutionsTitle} text={h.solutionsText} />
 
           <div className="mt-12">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-white/60">{h.stagesTitle}</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white/70">{h.stagesTitle}</h3>
             <ol className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {h.stages.map((s, i) => (
                 <li key={i} className="reveal relative rounded-2xl bg-white/[0.06] p-5 ring-1 ring-white/10">
@@ -220,7 +220,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                     <span className="inline-flex size-10 items-center justify-center rounded-full bg-leaf-500 text-forest-950">
                       <Icon name={STAGE_ICONS[i]} className="size-5" />
                     </span>
-                    <span className="ltr-num text-2xl font-bold text-white/25">0{i + 1}</span>
+                    <span aria-hidden="true" className="ltr-num text-2xl font-bold text-white/30">0{i + 1}</span>
                   </div>
                   <p className="mt-4 font-bold">{s.title}</p>
                   <p className="mt-1 text-sm text-white/70">{s.text}</p>
@@ -253,7 +253,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {company.whyUs.map((w, i) => (
             <li key={i} className="reveal card p-6 text-center">
-              <span className="mx-auto inline-flex size-14 items-center justify-center rounded-full bg-forest-800 text-leaf-400">
+              <span className="mx-auto inline-flex size-14 items-center justify-center rounded-full bg-forest-800 text-leaf-300">
                 <Icon name={WHY_ICONS[i]} className="size-6" />
               </span>
               <h3 className="mt-4 font-bold text-forest-900">{w.title[locale]}</h3>
@@ -298,7 +298,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                 </span>
                 <div>
                   <p className="text-lg font-bold">{b.city[locale]}</p>
-                  {b.label && <p className={`text-sm font-semibold ${b.headOffice ? "text-leaf-400" : "text-leaf-600"}`}>{b.label[locale]}</p>}
+                  {b.label && <p className={`text-sm font-semibold ${b.headOffice ? "text-leaf-300" : "text-leaf-600"}`}>{b.label[locale]}</p>}
                   {b.covers && (
                     <p className={`mt-0.5 text-sm ${b.headOffice ? "text-white/70" : "text-ink-500"}`}>
                       {dict.contact.covers}: {b.covers[locale]}

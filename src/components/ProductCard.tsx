@@ -24,11 +24,11 @@ export function ProductCard({ item, locale, priority = false }: { item: CatalogI
           sizes="(min-width: 1280px) 280px, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="object-contain p-5 transition duration-500 group-hover:scale-[1.04]"
         />
-        <span className="ltr-num absolute top-3 start-3 rounded-full bg-white/90 px-2.5 py-1 text-[0.7rem] font-bold text-forest-800 shadow-sm">
+        <span className="ltr-num absolute top-3 start-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-bold text-forest-800 shadow-sm">
           #{String(item.number).padStart(2, "0")}
         </span>
         {item.pesticide && (
-          <span className="absolute top-3 end-3 inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-1 text-[0.7rem] font-semibold text-amber-900">
+          <span className="absolute top-3 end-3 inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-900">
             <Icon name="alert" className="size-3.5" />
             <span className="sr-only">{item.categoryName}</span>
           </span>

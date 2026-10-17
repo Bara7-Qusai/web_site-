@@ -14,9 +14,12 @@
   --color-forest-800: #115230;
   --color-forest-700: #17643b;
   --color-forest-600: #1f7646;
-  --color-leaf-600: #558a33;
+  /* leaf-600 darkened from #558a33 to pass 4.5:1 on all light surfaces */
+  --color-leaf-600: #4a7a2c;
   --color-leaf-500: #68a241;
   --color-leaf-400: #86b95f;
+  /* text on dark green (5.3:1 on forest-800) */
+  --color-leaf-300: #a6d083;
   --color-leaf-200: #cfe5bd;
   --color-leaf-100: #e8f2df;
   --color-leaf-50: #f3f8ee;
@@ -69,6 +72,15 @@
     background: var(--color-leaf-200);
     color: var(--color-forest-900);
   }
+  /* Tailwind 4 no longer sets a pointer cursor on buttons */
+  button:not(:disabled),
+  [role="button"],
+  select,
+  summary,
+  label:has(> input[type="radio"]),
+  label:has(> input[type="checkbox"]) {
+    cursor: pointer;
+  }
   :focus-visible {
     outline: 3px solid var(--color-leaf-500);
     outline-offset: 2px;
@@ -118,6 +130,7 @@
     justify-content: center;
     gap: 0.5rem;
     border-radius: 999px;
+    min-height: 2.75rem; /* 44px touch target */
     padding: 0.75rem 1.4rem;
     font-weight: 600;
     font-size: 0.95rem;
@@ -132,6 +145,10 @@
   }
   .btn:active {
     transform: translateY(1px);
+  }
+  .btn:disabled {
+    opacity: 0.65;
+    cursor: progress;
   }
   .btn-primary {
     background: var(--color-forest-800);
@@ -173,7 +190,7 @@
     background: #188246;
   }
   .btn-sm {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.1rem;
     font-size: 0.85rem;
   }
 

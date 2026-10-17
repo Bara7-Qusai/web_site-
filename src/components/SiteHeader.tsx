@@ -36,7 +36,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <NavLinks
             items={items}
             className="flex items-center gap-1"
-            itemClassName="relative px-3.5 py-2 text-[0.95rem] font-semibold transition-colors after:absolute after:inset-x-3.5 after:-bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-leaf-500 after:transition-transform hover:after:scale-x-100"
+            itemClassName="relative inline-flex min-h-11 items-center px-3.5 py-2 text-[0.95rem] font-semibold transition-colors after:absolute after:inset-x-3.5 after:-bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-leaf-500 after:transition-transform hover:after:scale-x-100"
           />
         </nav>
         <div className="flex items-center gap-2">

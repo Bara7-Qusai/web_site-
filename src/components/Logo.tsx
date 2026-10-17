@@ -7,7 +7,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 export function Logo({ locale, variant = "color", className = "" }: { locale: Locale; variant?: "color" | "white"; className?: string }) {
   const dict = getDictionary(locale);
   return (
-    <Link href={href(locale)} className={`inline-flex items-center gap-3 ${className}`} aria-label={`${dict.meta.siteName} — ${dict.meta.home}`}>
+    <Link href={href(locale)} className={`inline-flex min-h-11 items-center gap-3 ${className}`} aria-label={`${dict.meta.siteName} — ${dict.meta.home}`}>
       <Image
         src={variant === "white" ? "/images/brand/logo-white.png" : "/images/brand/logo-color.png"}
         alt={dict.meta.siteName}

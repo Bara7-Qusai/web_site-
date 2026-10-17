@@ -21,9 +21,9 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         <div>
           <Logo locale={locale} variant="white" />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">{dict.footer.about}</p>
-          <p className="mt-4 text-lg font-semibold text-leaf-400">{company.tagline[locale]}</p>
+          <p className="mt-4 text-lg font-semibold text-leaf-300">{company.tagline[locale]}</p>
           <div className="mt-6 flex items-center gap-3">
-            <span className="text-xs uppercase tracking-wider text-white/50">{dict.footer.language}</span>
+            <span className="text-xs uppercase tracking-wider text-white/70">{dict.footer.language}</span>
             <LanguageSwitcher locale={locale} tone="light" />
           </div>
         </div>
@@ -32,14 +32,14 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <ul className="mt-4 space-y-2.5 text-sm">
             {navItems(locale).map((i) => (
               <li key={i.href}>
-                <Link href={i.href} className="hover:text-leaf-400">{i.label}</Link>
+                <Link href={i.href} className="hover:text-leaf-300">{i.label}</Link>
               </li>
             ))}
             <li>
-              <Link href={href(locale, "/compare")} className="hover:text-leaf-400">{dict.nav.compare}</Link>
+              <Link href={href(locale, "/compare")} className="hover:text-leaf-300">{dict.nav.compare}</Link>
             </li>
             <li>
-              <a href={`/downloads/al-kunooz-catalog-${locale}.pdf`} className="hover:text-leaf-400" download>
+              <a href={`/downloads/al-kunooz-catalog-${locale}.pdf`} className="hover:text-leaf-300" download>
                 {dict.common.downloadCatalog}
               </a>
             </li>
@@ -51,7 +51,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             {categories.map((c) => (
               <li key={c.id}>
                 {/* Plain link: forces the catalog to re-read filters even when already on /products */}
-                <a href={`${href(locale, "/products")}?category=${c.id}`} className="hover:text-leaf-400">
+                <a href={`${href(locale, "/products")}?category=${c.id}`} className="hover:text-leaf-300">
                   {c.name[locale]}
                 </a>
               </li>
@@ -62,33 +62,33 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <h2 className="text-sm font-bold text-white">{dict.footer.contact}</h2>
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-start gap-2.5">
-              <Icon name="pin" className="mt-0.5 size-4 shrink-0 text-leaf-400" />
+              <Icon name="pin" className="mt-0.5 size-4 shrink-0 text-leaf-300" />
               <span>
                 {dict.contact.addressValue}
-                <span className="mt-1 block text-white/55">
+                <span className="mt-1 block text-white/70">
                   {branches.filter((b) => !b.headOffice).map((b) => b.city[locale]).join(" · ")}
                 </span>
               </span>
             </li>
             <li className="flex items-center gap-2.5">
-              <Icon name="phone" className="size-4 shrink-0 text-leaf-400" />
+              <Icon name="phone" className="size-4 shrink-0 text-leaf-300" />
               {tel ? (
-                <a href={tel} className="ltr-num hover:text-leaf-400">{siteConfig.phone}</a>
+                <a href={tel} className="ltr-num hover:text-leaf-300">{siteConfig.phone}</a>
               ) : (
-                <span className="text-white/55">{dict.contact.phone}: {dict.contact.pending}</span>
+                <span className="text-white/70">{dict.contact.phone}: {dict.contact.pending}</span>
               )}
             </li>
             <li className="flex items-center gap-2.5">
-              <Icon name="mail" className="size-4 shrink-0 text-leaf-400" />
+              <Icon name="mail" className="size-4 shrink-0 text-leaf-300" />
               {siteConfig.email ? (
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-leaf-400">{siteConfig.email}</a>
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-leaf-300">{siteConfig.email}</a>
               ) : (
-                <span className="text-white/55">{dict.contact.email}: {dict.contact.pending}</span>
+                <span className="text-white/70">{dict.contact.email}: {dict.contact.pending}</span>
               )}
             </li>
             <li className="flex items-center gap-2.5">
-              <Icon name="facebook" className="size-4 shrink-0 text-leaf-400" />
-              <a href={siteConfig.facebook} target="_blank" rel="noopener noreferrer" className="ltr-num hover:text-leaf-400">
+              <Icon name="facebook" className="size-4 shrink-0 text-leaf-300" />
+              <a href={siteConfig.facebook} target="_blank" rel="noopener noreferrer" className="ltr-num hover:text-leaf-300">
                 {siteConfig.facebookLabel}
               </a>
             </li>
@@ -96,7 +96,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-x flex flex-col gap-2 py-5 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-x flex flex-col gap-2 py-5 text-xs text-white/70 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © <span className="ltr-num">{year}</span> {company.name[locale]}. {dict.footer.rights}
           </p>

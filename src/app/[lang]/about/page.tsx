@@ -52,7 +52,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         ].map((b) => (
           <div key={b.title} className="relative overflow-hidden rounded-3xl bg-forest-800 p-8 text-white sm:p-10">
             <div className="brand-dots pointer-events-none absolute -top-6 end-0 h-32 w-48 opacity-40" />
-            <Icon name={b.icon} className="relative size-9 text-leaf-400" />
+            <Icon name={b.icon} className="relative size-9 text-leaf-300" />
             <h2 className="relative mt-4 text-2xl font-bold">{b.title}</h2>
             <p className="relative mt-3 text-lg leading-relaxed text-white/85">{b.text}</p>
           </div>
@@ -142,7 +142,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
             <h2 className="text-2xl font-bold text-forest-900">{d.management}</h2>
             {company.management.map((m) => (
               <div key={m.name.en} className="mt-5 flex items-center gap-4 rounded-2xl bg-white p-5 ring-1 ring-sand-200">
-                <span className="inline-flex size-14 items-center justify-center rounded-full bg-forest-800 text-leaf-400">
+                <span className="inline-flex size-14 items-center justify-center rounded-full bg-forest-800 text-leaf-300">
                   <Icon name="user" className="size-7" />
                 </span>
                 <div>

@@ -53,7 +53,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
     <>
       <PageHero locale={locale} title={d.title} lead={d.lead} crumbs={[{ label: dict.nav.contact }]} />
 
-      <div className="container-x grid gap-8 pb-24 pt-8 lg:grid-cols-[1fr_1.5fr]">
+      <div className="container-x grid grid-cols-1 gap-8 pb-24 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
         <div className="space-y-6">
           <section className="card p-6 sm:p-8" aria-labelledby="details">
             <h2 id="details" className="text-xl font-bold text-forest-900">{d.details}</h2>
@@ -95,7 +95,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
           </section>
 
           <section className="rounded-3xl bg-forest-800 p-6 text-white sm:p-8" aria-labelledby="distributors">
-            <Icon name="handshake" className="size-8 text-leaf-400" />
+            <Icon name="handshake" className="size-8 text-leaf-300" />
             <h2 id="distributors" className="mt-3 text-xl font-bold">{d.distributorTitle}</h2>
             <p className="mt-2 text-sm leading-relaxed text-white/80">{d.distributorText}</p>
           </section>
@@ -112,10 +112,10 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
             {branches.map((b) => (
               <li key={b.id} className={`rounded-2xl p-6 ${b.headOffice ? "bg-forest-800 text-white sm:col-span-2 lg:col-span-1" : "bg-sand-50 ring-1 ring-sand-200"}`}>
                 <div className="flex items-center gap-3">
-                  <Icon name={b.headOffice ? "star" : "pin"} className={`size-6 ${b.headOffice ? "text-leaf-400" : "text-leaf-600"}`} />
+                  <Icon name={b.headOffice ? "star" : "pin"} className={`size-6 ${b.headOffice ? "text-leaf-300" : "text-leaf-600"}`} />
                   <h3 className="text-xl font-bold">{b.city[locale]}</h3>
                 </div>
-                {b.label && <p className={`mt-2 text-sm font-semibold ${b.headOffice ? "text-leaf-400" : "text-leaf-600"}`}>{b.label[locale]}</p>}
+                {b.label && <p className={`mt-2 text-sm font-semibold ${b.headOffice ? "text-leaf-300" : "text-leaf-600"}`}>{b.label[locale]}</p>}
                 {b.covers && (
                   <p className={`mt-1 text-sm ${b.headOffice ? "text-white/75" : "text-ink-700"}`}>
                     {d.covers}: {b.covers[locale]}
@@ -125,7 +125,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
                   {b.mapUrl ? (
                     <a href={b.mapUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">{d.openMap}</a>
                   ) : (
-                    <span className={b.headOffice ? "text-white/60" : "text-ink-500"}>{d.mapPending}</span>
+                    <span className={b.headOffice ? "text-white/70" : "text-ink-500"}>{d.mapPending}</span>
                   )}
                 </p>
               </li>

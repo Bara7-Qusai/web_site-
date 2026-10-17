@@ -24,7 +24,7 @@ export function LanguageSwitcher({ locale, className = "", tone = "dark" }: { lo
         e.preventDefault();
         window.location.assign(target + window.location.search + window.location.hash);
       }}
-      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold transition ${
+      className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-semibold transition ${
         tone === "dark" ? "border border-sand-300 text-forest-800 hover:border-forest-800" : "border border-white/30 text-white hover:bg-white/10"
       } ${className}`}
     >

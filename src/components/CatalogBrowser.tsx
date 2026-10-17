@@ -101,11 +101,11 @@ export function CatalogBrowser({
   const extra = category ? crossListed[category] : undefined;
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[17rem_1fr]">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
       {/* Filters */}
       <aside aria-label={t.filters} className="lg:sticky lg:top-24 lg:self-start">
         <h2 className="sr-only">{t.filters}</h2>
-        <fieldset>
+        <fieldset className="min-w-0">
           <legend className="mb-3 text-sm font-bold text-ink-900">{t.category}</legend>
           <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0 lg:pb-0">
             {[{ id: null as CategoryId | null, label: t.allCategories, count: items.length }, ...categories].map((c) => {
@@ -116,7 +116,7 @@ export function CatalogBrowser({
                   type="button"
                   aria-pressed={active}
                   onClick={() => update({ category: c.id })}
-                  className={`flex shrink-0 items-center justify-between gap-3 rounded-xl px-3.5 py-2.5 text-start text-sm font-medium transition lg:w-full ${
+                  className={`flex min-h-11 shrink-0 items-center justify-between gap-3 rounded-xl px-3.5 py-2.5 text-start text-sm font-medium transition lg:w-full ${
                     active ? "bg-forest-800 text-white shadow-card" : "bg-white text-ink-700 ring-1 ring-sand-200 hover:ring-leaf-400"
                   }`}
                 >

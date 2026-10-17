@@ -38,10 +38,10 @@ export default async function PrintableCatalog({ params }: PageProps<"/[lang]/ca
           <Image src="/images/brand/logo-white.png" alt={company.name[locale]} width={1614} height={511} className="h-20 w-auto" />
         </div>
         <div className="relative">
-          <p className="text-leaf-400">{locale === "ar" ? "الملف التعريفي ودليل المنتجات" : "Company Profile & Product Catalog"}</p>
+          <p className="text-leaf-300">{locale === "ar" ? "الملف التعريفي ودليل المنتجات" : "Company Profile & Product Catalog"}</p>
           <h1 className="mt-3 text-5xl font-bold">{company.name[locale]}</h1>
           <p className="mt-2 text-2xl text-white/80">{company.tagline[locale]}</p>
-          <p className="mt-1 text-lg text-white/60" lang={other}>{company.tagline[other]}</p>
+          <p className="mt-1 text-lg text-white/70" lang={other}>{company.tagline[other]}</p>
         </div>
         <div className="relative rounded-2xl bg-white p-4">
           <Image src="/images/brand/product-lineup.jpg" alt="" width={1400} height={480} className="h-auto w-full" />
@@ -73,7 +73,7 @@ export default async function PrintableCatalog({ params }: PageProps<"/[lang]/ca
       {categories.map((c) => (
         <section key={c.id} className="mx-auto max-w-4xl px-10 py-8 print:break-before-page">
           <div className="rounded-2xl bg-forest-800 px-6 py-5 text-white">
-            <p className="ltr-num text-sm text-leaf-400">{String(c.section).padStart(2, "0")}</p>
+            <p className="ltr-num text-sm text-leaf-300">{String(c.section).padStart(2, "0")}</p>
             <h2 className="text-2xl font-bold">{c.name[locale]}</h2>
             <p className="mt-1 text-sm text-white/75">{c.description[locale]}</p>
           </div>

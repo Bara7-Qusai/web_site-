@@ -71,6 +71,8 @@ try {
   await page.getByRole("button", { name: "Add to compare" }).first().click();
   await page.getByRole("link", { name: "Compare now" }).click();
   await page.waitForURL(/compare\?items=/);
+  // The comparison table renders in the browser, after the saved list is read.
+  await page.waitForSelector("thead th >> nth=2");
   assert.equal(await page.locator("thead th").count(), 3);
 
   step("inquiry form validates and pre-fills from the product link");

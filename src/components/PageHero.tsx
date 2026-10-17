@@ -26,7 +26,7 @@ export function PageHero({
       <div className="brand-dots pointer-events-none absolute -top-10 start-0 h-56 w-72 opacity-50 [mask-image:radial-gradient(black,transparent_70%)]" />
       <div className="container-x relative py-10 sm:py-14">
         <nav aria-label={dict.product.breadcrumb}>
-          <ol className="flex flex-wrap items-center gap-1.5 text-sm text-white/65">
+          <ol className="flex flex-wrap items-center gap-1.5 text-sm text-white/75">
             {trail.map((c, i) => (
               <li key={i} className="flex items-center gap-1.5">
                 {i > 0 && <Icon name="arrow" className="size-3.5 opacity-60 rtl:-scale-x-100" />}

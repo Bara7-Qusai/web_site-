@@ -15,7 +15,7 @@ export function SectionHeading({
 }) {
   return (
     <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}>
-      {eyebrow && <p className={`eyebrow ${tone === "light" ? "!text-leaf-400" : ""}`}>{eyebrow}</p>}
+      {eyebrow && <p className={`eyebrow ${tone === "light" ? "!text-leaf-300" : ""}`}>{eyebrow}</p>}
       <h2 id={id} className={`mt-3 text-3xl font-bold leading-tight sm:text-4xl ${tone === "light" ? "text-white" : "text-forest-900"}`}>
         {title}
       </h2>

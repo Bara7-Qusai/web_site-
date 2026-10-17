@@ -114,7 +114,7 @@ export function InquiryForm({ locale, products }: { locale: Locale; products: { 
         <legend className="text-sm font-semibold text-ink-900">{dict.type}</legend>
         <div className="mt-2 flex flex-wrap gap-2">
           {INQUIRY_TYPES.map((t) => (
-            <label key={t} className={`cursor-pointer rounded-full px-3.5 py-2 text-sm font-medium ring-1 transition has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-leaf-500 ${type === t ? "bg-forest-800 text-white ring-forest-800" : "bg-white text-ink-700 ring-sand-300 hover:ring-leaf-500"}`}>
+            <label key={t} className={`inline-flex min-h-11 cursor-pointer items-center rounded-full px-3.5 py-2 text-sm font-medium ring-1 transition has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-leaf-500 ${type === t ? "bg-forest-800 text-white ring-forest-800" : "bg-white text-ink-700 ring-sand-300 hover:ring-leaf-500"}`}>
               <input type="radio" name="type" value={t} checked={type === t} onChange={() => setType(t)} className="sr-only" />
               {dict.types[t]}
             </label>

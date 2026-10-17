@@ -20,7 +20,7 @@ export function CompareTray({ locale, index }: { locale: Locale; index: CompareI
   return (
     <aside aria-label={dict.tray} className="no-print fixed inset-x-0 bottom-4 z-40 px-4">
       <div className="mx-auto flex max-w-3xl items-center gap-3 rounded-2xl border border-forest-700 bg-forest-900/95 p-3 text-white shadow-lift backdrop-blur animate-rise">
-        <Icon name="compare" className="ms-1 hidden size-5 text-leaf-400 sm:block" />
+        <Icon name="compare" className="ms-1 hidden size-5 text-leaf-300 sm:block" />
         <ul className="flex flex-1 items-center gap-2 overflow-x-auto">
           {list.map((slug) => (
             <li key={slug} className="flex shrink-0 items-center gap-2 rounded-xl bg-white/10 py-1 ps-1 pe-2">
@@ -31,7 +31,7 @@ export function CompareTray({ locale, index }: { locale: Locale; index: CompareI
               </button>
             </li>
           ))}
-          <li className="text-xs text-white/60 ltr-num">
+          <li className="text-xs text-white/70 ltr-num">
             {list.length}/{COMPARE_MAX}
           </li>
         </ul>

@@ -11,7 +11,7 @@ export default function GlobalNotFound() {
     <html lang="ar" dir="rtl">
       <body className="flex min-h-dvh items-center justify-center bg-forest-800 p-6 text-center text-white">
         <main>
-          <p className="ltr-num text-7xl font-bold text-leaf-400">404</p>
+          <p className="ltr-num text-7xl font-bold text-leaf-300">404</p>
           <h1 className="mt-4 text-2xl font-bold">الصفحة غير موجودة</h1>
           <p className="mt-1 text-white/70" lang="en" dir="ltr">Page not found</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">

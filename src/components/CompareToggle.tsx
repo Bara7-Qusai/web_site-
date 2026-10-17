@@ -24,7 +24,7 @@ export function CompareToggle({ slug, locale, variant = "chip" }: { slug: string
         }}
         className={
           variant === "chip"
-            ? `inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+            ? `inline-flex min-h-11 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition ${
                 active ? "bg-forest-800 text-white" : "bg-sand-100 text-ink-700 hover:bg-sand-200"
               }`
             : `btn ${active ? "btn-primary" : "btn-outline"}`

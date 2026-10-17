@@ -105,7 +105,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
       </div>
 
       {/* ───────────── Overview ───────────── */}
-      <section className="container-x grid gap-10 py-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14 lg:py-14">
+      <section className="container-x grid grid-cols-1 gap-10 py-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14 lg:py-14">
         <div className="lg:sticky lg:top-24 lg:self-start">
           <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-gradient-to-br from-white via-sand-50 to-leaf-50 ring-1 ring-sand-200 shadow-card">
             <Image
@@ -300,7 +300,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {needs.map((n) => (
                     <li key={n.id}>
-                      <Link href={`${href(locale, "/solutions")}#${n.id}`} className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-sm font-medium text-forest-800 ring-1 ring-leaf-200 hover:bg-leaf-50">
+                      <Link href={`${href(locale, "/solutions")}#${n.id}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-medium text-forest-800 ring-1 ring-leaf-200 hover:bg-leaf-50">
                         <Icon name={n.icon} className="size-4" />
                         {n.title[locale]}
                       </Link>

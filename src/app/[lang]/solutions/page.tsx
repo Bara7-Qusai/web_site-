@@ -36,7 +36,7 @@ export default async function SolutionsPage({ params }: PageProps<"/[lang]/solut
 
         <nav aria-label={d.title} className="mt-8 flex gap-2 overflow-x-auto pb-2">
           {solutions.map((s) => (
-            <a key={s.id} href={`#${s.id}`} className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-medium text-ink-700 ring-1 ring-sand-200 hover:text-forest-800 hover:ring-leaf-400">
+            <a key={s.id} href={`#${s.id}`} className="inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-medium text-ink-700 ring-1 ring-sand-200 hover:text-forest-800 hover:ring-leaf-400">
               <Icon name={s.icon} className="size-4 text-leaf-600" />
               {s.title[locale]}
             </a>
@@ -47,7 +47,7 @@ export default async function SolutionsPage({ params }: PageProps<"/[lang]/solut
           {solutions.map((s) => (
             <section key={s.id} id={s.id} aria-labelledby={`${s.id}-title`} className="reveal card scroll-mt-28 p-6 sm:p-8">
               <div className="flex items-start gap-4">
-                <span className="inline-flex size-14 shrink-0 items-center justify-center rounded-2xl bg-forest-800 text-leaf-400">
+                <span className="inline-flex size-14 shrink-0 items-center justify-center rounded-2xl bg-forest-800 text-leaf-300">
                   <Icon name={s.icon} className="size-7" />
                 </span>
                 <div>
@@ -89,7 +89,7 @@ export default async function SolutionsPage({ params }: PageProps<"/[lang]/solut
         </div>
 
         <div className="mt-14 flex flex-col items-center gap-4 rounded-3xl bg-forest-800 p-10 text-center text-white">
-          <Icon name="user" className="size-10 text-leaf-400" />
+          <Icon name="user" className="size-10 text-leaf-300" />
           <p className="max-w-xl text-lg">{dict.product.inquiryText}</p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href={`${href(locale, "/contact")}?type=technical`} className="btn btn-leaf">{d.askExpert}</Link>
