@@ -1,0 +1,151 @@
+[project]
+name = "pharmacy-backend"
+version = "0.1.0"
+description = "Four-branch Pharmacy Management System backend (modular monolith)"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "pydantic-settings>=2.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.27",
+    "import-linter>=2.1",
+    "mypy>=1.13",
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+# ---------------------------------------------------------------- Ruff [A-07]
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+src = ["."]
+
+[tool.ruff.lint]
+select = [
+    "E", "W", "F",  # pycodestyle, pyflakes
+    "I",            # import sorting
+    "N",            # pep8-naming
+    "UP",           # pyupgrade
+    "B",            # bugbear
+    "A",            # builtin shadowing
+    "C4",           # comprehensions
+    "C90",          # complexity [A-12]
+    "DTZ",          # naive datetimes
+    "T20",          # print
+    "SIM", "PT", "RET", "TID", "RUF", "S", "ANN", "PL",
+]
+ignore = [
+    "PLR2004",  # magic values in comparisons: too noisy for domain thresholds
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**" = ["S101", "ANN", "PLR2004"]
+"tests/**" = ["S101", "ANN", "PLR2004"]
+
+# ---------------------------------------------------------------- mypy [A-08]
+[tool.mypy]
+python_version = "3.13"
+strict = true
+plugins = ["pydantic.mypy"]
+files = ["app", "tests"]
+explicit_package_bases = true
+
+# --------------------------------------------------------- pytest/coverage [A-02]
+[tool.pytest.ini_options]
+testpaths = ["app", "tests"]
+addopts = "--import-mode=importlib -ra --strict-markers --cov=app --cov-branch --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["app"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+# Default floor. Override with `pytest --cov-fail-under=N` or CI var BACKEND_COVERAGE_MIN.
+fail_under = 80
+exclude_also = ["if TYPE_CHECKING:"]
+
+# ------------------------------------------------------- import-linter [A-10]
+[tool.importlinter]
+root_packages = ["app"]
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "Domain is framework-free"
+type = "forbidden"
+source_modules = ["app.modules.*.domain"]
+forbidden_modules = [
+    "fastapi", "starlette", "sqlalchemy", "alembic", "psycopg", "asyncpg",
+    "redis", "celery", "pydantic", "pydantic_settings",
+]
+
+[[tool.importlinter.contracts]]
+name = "Domain is the innermost layer"
+type = "forbidden"
+source_modules = ["app.modules.*.domain"]
+forbidden_modules = [
+    "app.modules.*.application",
+    "app.modules.*.infrastructure",
+    "app.modules.*.presentation",
+    "app.core",
+]
+
+[[tool.importlinter.contracts]]
+name = "Application does not depend on infrastructure or presentation"
+type = "forbidden"
+source_modules = ["app.modules.*.application"]
+forbidden_modules = [
+    "app.modules.*.infrastructure",
+    "app.modules.*.presentation",
+    "app.core",
+]
+
+[[tool.importlinter.contracts]]
+name = "Infrastructure does not depend on presentation"
+type = "forbidden"
+source_modules = ["app.modules.*.infrastructure"]
+forbidden_modules = ["app.modules.*.presentation"]
+
+[[tool.importlinter.contracts]]
+name = "Shared is independent"
+type = "forbidden"
+source_modules = ["app.shared"]
+forbidden_modules = ["app.core", "app.modules"]
+
+[[tool.importlinter.contracts]]
+name = "Core does not import business modules"
+type = "forbidden"
+source_modules = ["app.core"]
+forbidden_modules = ["app.modules"]
+
+[[tool.importlinter.contracts]]
+name = "Module dependency order (higher may import lower; no cycles)"
+type = "layers"
+containers = ["app.modules"]
+layers = [
+    "reporting",
+    "finance",
+    "returns | transfers | purchasing",
+    "sales | cash",
+    "payments",
+    "inventory",
+    "catalog",
+    "branches | identity",
+    "audit | notifications | settings",
+]
