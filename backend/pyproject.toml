@@ -5,6 +5,7 @@ description = "Four-branch Pharmacy Management System backend (modular monolith)
 requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.115",
+    "uvicorn>=0.30",
     "pydantic-settings>=2.6",
 ]
 

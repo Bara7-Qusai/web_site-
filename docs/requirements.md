@@ -273,6 +273,17 @@ Status values: **Open** (assumed, awaiting confirmation), **Confirmed**, **Repla
 | A-31 | Module public interface is `app/modules/<module>/public.py` | §1 | Open |
 | A-32 | Backend lives in `backend/`, frontend in `frontend/` | §3 | Open |
 | A-33 | PostgreSQL 16, FastAPI, SQLAlchemy 2, Celery + Redis for background jobs | §1/§10 | Open |
+| A-34 | Frontend versions: TypeScript pinned to 5.9 (typescript-eslint and openapi-typescript do not yet support TS 7); jsdom 29 (jsdom 30 needs a newer Node patch than 22.22.0); Vite 8, ESLint 10, Vitest 5, React 19 | frontend | Open |
+| A-35 | npm with committed `package-lock.json`; CI uses `npm ci`; Node 22 | frontend | Open |
+| A-36 | No frontend formatter (Prettier) yet; ESLint is the only gate | §7 | Open |
+| A-37 | Browser reaches the API same-origin (dev/preview proxy, production reverse proxy); no CORS | §2 | Open |
+| A-38 | `contracts/openapi.json` and generated `schema.d.ts` are committed; CI fails on drift | §8 | Open |
+| A-39 | UI languages English (default) and Arabic; detection order stored, browser, English; RTL via `dir` plus logical CSS | frontend | Open |
+| A-40 | Translations are typed TS objects; Arabic text awaits native-speaker review | frontend | Open |
+| A-41 | Feature folders are created when a module gets a real UI; only `system` exists | §3 | Open |
+| A-42 | Navigation lists only mounted features; no placeholder pages | frontend | Open |
+| A-43 | E2E uses Chromium only, against the built app and a real uvicorn | §5 | Open |
+| A-44 | No frontend coverage gate yet | §5 | Open |
 
 Phase 1 decisions carried over from the earlier design discussion (Money, stock ledger,
 idempotency, branch isolation, outbox) are recorded in sections 9 and 10 and treated as

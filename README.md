@@ -6,6 +6,7 @@ React + TypeScript frontend.
 * Requirements and assumption register: [`docs/requirements.md`](docs/requirements.md)
 * Architecture and module boundaries: [`docs/architecture.md`](docs/architecture.md)
 * Naming and coding conventions: [`docs/conventions.md`](docs/conventions.md)
+* Frontend architecture and commands: [`docs/frontend.md`](docs/frontend.md)
 * Phased plan and open items: [`docs/implementation-plan.md`](docs/implementation-plan.md)
 
 ## Backend quality checks
@@ -22,4 +23,13 @@ lint-imports          # architecture contracts
 pytest                # tests + coverage gate (default 80%; --cov-fail-under=N to override)
 ```
 
-CI (`.github/workflows/ci.yml`) runs exactly these commands.
+## Frontend quality checks
+
+```bash
+cd frontend
+npm ci
+npm run lint && npm run typecheck && npm test && npm run build
+npm run test:e2e   # needs the backend venv on PATH; see docs/frontend.md
+```
+
+CI (`.github/workflows/ci.yml`) runs these commands, plus an API contract-drift check.
