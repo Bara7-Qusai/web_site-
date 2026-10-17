@@ -1,0 +1,42 @@
+{
+  "name": "al-kunooz-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual (Arabic/English) corporate website and product catalog for Al-Kunooz Agricultural Solutions",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "node --test --experimental-strip-types tests/*.test.ts",
+    "validate:data": "node --experimental-strip-types scripts/validate-data.ts",
+    "catalog:pdf": "node scripts/generate-catalog-pdf.mjs",
+    "test:e2e": "node tests/e2e-smoke.mjs",
+    "build:static": "node scripts/build-static.mjs"
+  },
+  "engines": {
+    "node": ">=22.6"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/ibm-plex-sans-arabic": "^5.3.0",
+    "next": "^16.3.8",
+    "nodemailer": "^10.0.14",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.4",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.8",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3"
+  },
+  "type": "module"
+}
